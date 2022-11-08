@@ -26,7 +26,7 @@ public class Device {
     public void addSensor(Sensor sensor){
         sensors.add(sensor);
     }
-    public int runDevice() throws MqttException {
+    public void runDevice() throws MqttException {
         MqttConnectOptions con = new MqttConnectOptions();
         client.connect(con);
         int i=0;
@@ -39,7 +39,6 @@ public class Device {
             i++;
         }
         client.disconnect();
-        return 0;
     }
 
 }
