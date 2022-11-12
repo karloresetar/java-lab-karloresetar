@@ -1,0 +1,22 @@
+{
+  "topic": "vjezba",
+  "broker": "tcp://localhost:1883",
+  "sensors": [
+    {
+      "rasp1": 3.2,
+      "rasp2": 6.4,
+      "value": 0,
+      "factor": 10,
+      "unit": "C",
+      "name": "temperature"
+    },
+    {
+      "rasp1": 1.0,
+      "rasp2": 65.0,
+      "value": 0,
+      "factor": 1000,
+      "unit": "Bar",
+      "name": "Pressure"
+    }
+  ]
+}
