@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Java Lab6 Kayo - Measure Preview</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<div style="text-align: center;">
+  <h1>Measure list</h1>
+    <a th:href = "@{/addNewForm}" class="btn btn-primary btn-sm mb-3">Add Measure</a>
+    <a th:href = "@{/}" class="btn btn-primary btn-sm mb-3">Measure Home Page</a>
+  <br>
+  <br>
+  <br>
+  <br>
+  <table style="border: 1px solid black;" class = "table table-striped table-responsive-md">
+    <tbody>
+    <tr>
+      <td><b>Measure ID</b></td>
+      <td><b>DeviceID</b></td>
+      <td><b>Value</b></td>
+      <td><b>Unit</b></td>
+      <td><b>Day</b></td>
+      <td><b>Month</b></td>
+      <td><b>Year</b></td>
+    </tr>
+    <tr th:each="measure : ${measures}">
+      <td th:text="${measure.measureId}"></td>
+      <td th:text="${measure.device_id}"></td>
+      <td th:text="${measure.value}"></td>
+      <td th:text="${measure.unit}"></td>
+      <td th:text="${measure.dateHelper.day}"></td>
+      <td th:text="${measure.dateHelper.month}"></td>
+      <td th:text="${measure.dateHelper.year}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="pagination" th:if="${measurePage.getPageNumber() > 0}" th:each="pageNumber : ${pageNumbers}">
+       <a th:href="@{/measurelist(size=${measurePage.pageSize}, page=${pageNumbers})}"
+       th:text="${pageNumbers}"
+       th:class="${pageNumbers==measurePage.pageNumber + 1} ? active"></a>
+  </div>
+</div>
+
+</body>
+</html>
